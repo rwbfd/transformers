@@ -33,14 +33,6 @@ from .utils import logging
 if is_torch_tpu_available():
     import torch_xla.core.xla_model as xm
 
-# this is used to supress an undesired warning emitted by pytorch versions 1.4.2-1.7.0
-try:
-    from torch.optim.lr_scheduler import SAVE_STATE_WARNING
-except ImportError:
-    SAVE_STATE_WARNING = ""
-
-logger = logging.get_logger(__name__)
-
 
 def torch_pad_and_concatenate(tensor1, tensor2, padding_index=-100):
     """Concatenates `tensor1` and `tensor2` on first axis, applying padding on the second if necessary."""
